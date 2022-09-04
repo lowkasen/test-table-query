@@ -1,4 +1,4 @@
-/* eslint-disable header/header */
+/* eslint-disable */
 // Pseudo random numbers for deterministic screenshot and integration tests
 // Source: https://stackoverflow.com/a/19303725
 let seed = 1;

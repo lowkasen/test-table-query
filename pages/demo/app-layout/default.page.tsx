@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import React from "react";
+import type { NextPage } from "next";
 import AppLayout from "@cloudscape-design/components/app-layout";
 import Header from "@cloudscape-design/components/header";
 import {
@@ -12,7 +12,7 @@ import {
 import * as toolsContent from "./utils/tools-content";
 import labels from "./utils/labels";
 
-export default function () {
+const DefaultPage: NextPage = () => {
   return (
     <AppLayout
       ariaLabels={labels}
@@ -31,4 +31,6 @@ export default function () {
       }
     />
   );
-}
+};
+
+export default DefaultPage;
