@@ -127,7 +127,7 @@ const Home: NextPage = () => {
         <SideNavigation
           header={{
             href: "#",
-            text: "Helix Embed",
+            text: "KS HelloWorld CloudScape",
           }}
           items={range(30).map((i) => ({
             type: "link",
