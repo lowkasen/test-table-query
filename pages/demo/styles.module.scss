@@ -3,10 +3,10 @@
  SPDX-License-Identifier: Apache-2.0
 */
 
-@use '~design-tokens' as awsui;
+@use "@cloudscape-design/design-tokens" as awsui;
 
 .contentPlaceholder::before {
-  content: 'X';
+  content: "X";
   display: block;
   background-color: awsui.$color-background-input-disabled;
   color: awsui.$color-background-container-content;

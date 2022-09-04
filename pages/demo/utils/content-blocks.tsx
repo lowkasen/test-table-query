@@ -9,7 +9,7 @@ import SpaceBetween from "@cloudscape-design/components/space-between";
 import BreadcrumbGroup from "@cloudscape-design/components/breadcrumb-group";
 import SideNavigation from "@cloudscape-design/components/side-navigation";
 import HelpPanel from "@cloudscape-design/components/help-panel";
-import styles from "../styles.scss";
+import styles from "../styles.module.scss";
 import Flashbar from "@cloudscape-design/components/flashbar";
 import clsx from "clsx";
 
