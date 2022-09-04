@@ -8,9 +8,12 @@ import {
   Alert,
   BreadcrumbGroup,
   Button,
+  Container,
+  FormField,
   Header,
   HelpPanel,
   Icon,
+  Input,
   Link,
   SideNavigation,
   SpaceBetween,
@@ -18,6 +21,7 @@ import {
 
 const Home: NextPage = () => {
   const [alertVisible, setVisible] = useState(true);
+  const [inputValue, setInputValue] = useState("");
   return (
     <AppLayout
       contentType="form"
@@ -26,10 +30,10 @@ const Home: NextPage = () => {
           <Header
             variant="h1"
             info={<Link>Info</Link>}
-            description="When you create an Amazon CloudFront distribution."
-            actions={<Button variant="primary">Create distribution</Button>}
+            description="Portal to find card balances."
+            actions={<Button variant="primary">Query Card Balance</Button>}
           >
-            Create distribution
+            Query Card Balance
           </Header>
           {alertVisible && (
             <Alert
@@ -37,7 +41,8 @@ const Home: NextPage = () => {
               dismissAriaLabel="Close alert"
               onDismiss={() => setVisible(false)}
             >
-              Demo alert
+              This is a Demo interface for the web portal from AWS using the
+              CloudScape design system.
             </Alert>
           )}
         </SpaceBetween>
@@ -50,12 +55,32 @@ const Home: NextPage = () => {
           ]}
         />
       }
-      // content={}
+      content={
+        <Container
+          header={
+            <Header variant="h2" description="Please input card details">
+              Submit Card Details
+            </Header>
+          }
+        >
+          {
+            <FormField
+              description="Please enter the Embed Card ID"
+              label="Card ID"
+            >
+              <Input
+                value={inputValue}
+                onChange={(event) => setInputValue(event.detail.value)}
+              />
+            </FormField>
+          }
+        </Container>
+      }
       navigation={
         <SideNavigation
           header={{
             href: "#",
-            text: "Service name",
+            text: "Helix Embed",
           }}
           items={range(30).map((i) => ({
             type: "link",
