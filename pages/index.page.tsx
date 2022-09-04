@@ -9,19 +9,23 @@ import {
   BreadcrumbGroup,
   Button,
   Container,
+  Form,
   FormField,
   Header,
   HelpPanel,
   Icon,
   Input,
   Link,
+  Modal,
   SideNavigation,
   SpaceBetween,
 } from "@cloudscape-design/components";
 
 const Home: NextPage = () => {
-  const [alertVisible, setVisible] = useState(true);
+  const [alertVisible, setAlertVisible] = useState(true);
   const [inputValue, setInputValue] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <AppLayout
       contentType="form"
@@ -39,7 +43,7 @@ const Home: NextPage = () => {
             <Alert
               dismissible={true}
               dismissAriaLabel="Close alert"
-              onDismiss={() => setVisible(false)}
+              onDismiss={() => setAlertVisible(false)}
             >
               This is a Demo interface for the web portal from AWS using the
               CloudScape design system.
@@ -56,25 +60,68 @@ const Home: NextPage = () => {
         />
       }
       content={
-        <Container
-          header={
-            <Header variant="h2" description="Please input card details">
-              Submit Card Details
-            </Header>
-          }
-        >
-          {
-            <FormField
-              description="Please enter the Embed Card ID"
-              label="Card ID"
-            >
-              <Input
-                value={inputValue}
-                onChange={(event) => setInputValue(event.detail.value)}
-              />
-            </FormField>
-          }
-        </Container>
+        <>
+          <Form
+            actions={
+              <SpaceBetween direction="horizontal" size="xs">
+                <Button variant="link">Cancel</Button>
+                <Button variant="primary" onClick={() => setModalVisible(true)}>
+                  Submit
+                </Button>
+              </SpaceBetween>
+            }
+            // errorText="This is an error!"
+          >
+            <SpaceBetween direction="vertical" size="l">
+              <Container
+                header={
+                  <Header description="Please input card details" variant="h2">
+                    Submit Card Details
+                  </Header>
+                }
+              >
+                <SpaceBetween direction="vertical" size="l">
+                  <FormField
+                    description="Please enter the Embed Card ID"
+                    label="Card ID"
+                  >
+                    <Input
+                      value={inputValue}
+                      onChange={(event) => setInputValue(event.detail.value)}
+                    />
+                  </FormField>
+                </SpaceBetween>
+              </Container>
+            </SpaceBetween>
+          </Form>
+          <Modal
+            header="Card details"
+            visible={modalVisible}
+            onDismiss={() => setModalVisible(false)}
+            closeAriaLabel="Close modal"
+            footer={
+              <span style={{ display: "flex", justifyContent: "flex-end" }}>
+                {/* <Button variant="link">Cancel</Button> */}
+                <Button
+                  variant="primary"
+                  onClick={() => setModalVisible(false)}
+                >
+                  OK
+                </Button>
+              </span>
+            }
+          >
+            <p>
+              <b>CardID:</b> {inputValue}
+            </p>
+            <p>
+              <b>Balance:</b> 99999 SGD
+            </p>
+            <p>
+              <b>Transaction details:</b> ...
+            </p>
+          </Modal>
+        </>
       }
       navigation={
         <SideNavigation
