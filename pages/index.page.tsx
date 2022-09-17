@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           <Header
             variant="h1"
             info={<Link>Info</Link>}
-            description={`Portal to find card balances. Env variable: ${process.env.APIKEY}`}
+            description={`Portal to find card balances. Env variable: ${process.env.APIKEY}. v2`}
             actions={<Button variant="primary">Query Card Balance</Button>}
           >
             Query Card Balance
